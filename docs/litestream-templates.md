@@ -50,6 +50,7 @@ services:
     entrypoint: ["/bin/sh", "-c"]
     # Timeout of health check will need to depend on size of db, and speed of network to host.
     healthcheck:
+      # Insert first use test or equivalent conditional here
       test: /usr/local/bin/litestream restore -if-db-not-exists -if-replica-exists -o /data/app.db s3://${AWS_S3_BUCKET}/MyApp.sqlite
       timeout: 10m
       retries: 1
